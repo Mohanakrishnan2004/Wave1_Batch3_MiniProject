@@ -34,4 +34,16 @@ public abstract class Budget {
 	}
 	
 	protected abstract boolean validateExpense(double amount);
+	
+	public double forecastRemainingBudget(int futureExpenseCount) {
+		
+		if(expenses.size() <= 0) {
+			return getRemainingAmount();
+		}
+		
+		double averageExpense = usedAmount / expenses.size();
+		double predictedUsage = averageExpense * futureExpenseCount;
+		
+		return getRemainingAmount() - predictedUsage;
+	}
 }

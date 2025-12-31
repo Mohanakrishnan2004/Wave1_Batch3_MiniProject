@@ -5,7 +5,7 @@ public abstract class Expense {
     private int expenseId;
     private double amount;
     private String status;
-    private Receipt receipt;   
+    private Receipt receipt;   // 🔹 Added receipt
 
     public Expense(int expenseId, double amount) {
         this.expenseId = expenseId;
@@ -13,6 +13,7 @@ public abstract class Expense {
         this.status = "SUBMITTED";
     }
 
+    // ---------- Getters ----------
     public int getExpenseId() {
         return expenseId;
     }
@@ -29,6 +30,7 @@ public abstract class Expense {
         return receipt;
     }
 
+    // ---------- Setters ----------
     public void setStatus(String status) {
         this.status = status;
     }
@@ -37,5 +39,6 @@ public abstract class Expense {
         this.receipt = receipt;
     }
 
+    // ---------- Abstract Method ----------
     public abstract double calculateReimbursement();
 }

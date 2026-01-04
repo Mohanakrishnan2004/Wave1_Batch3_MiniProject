@@ -12,6 +12,14 @@ public class Employee {
         this.empId = empId;
         this.name = name;
     }
+    
+    public int getEmpId() {
+        return empId;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public void addExpense(Expense expense) {
         expenses.add(expense);

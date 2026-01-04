@@ -1,4 +1,5 @@
 import model.*;
+import output.FileOutput;
 import service.*;
 import exception.PolicyViolationException;
 
@@ -26,8 +27,7 @@ public class Main {
 
             ExpenseService expenseService = new ExpenseService();
             ApprovalService approvalService = new ApprovalService();
-            FinanceService financeService = new FinanceService(); // ✅ Enhanced FSI
-
+            FinanceService financeService = new FinanceService(); 
             Set<Integer> expenseIdSet = new HashSet<>();
             Set<String> categorySet = new HashSet<>();
 
@@ -56,6 +56,7 @@ public class Main {
                 }
 
                 Expense expense;
+                
 
                 if (category.equals("TRAVEL")) {
                     
@@ -68,6 +69,7 @@ public class Main {
                     System.out.println("Invalid expense category.");
                     continue;
                 }
+                expense.setCategory(category);
 
                 // ---------- RECEIPT FILE INPUT ----------
                 System.out.print("Enter Receipt File Name (e.g., receipt.txt): ");
@@ -87,17 +89,19 @@ public class Main {
                 approvalService.approveExpense(expense, 1);
                 approvalService.approveExpense(expense, 2);
 
-                /*---------- FINANCE SYSTEM INTEGRATION ----------
-                financeService.processPayment(expense);*/
+                //---------- FINANCE SYSTEM INTEGRATION ----------
 
                 System.out.println("\nExpense Submitted Successfully!");
                 System.out.println("Reimbursement Amount: " + expense.calculateReimbursement());
                 System.out.println("Approval Status: " + expense.getStatus());
                 System.out.println("");
                 
-             // ---------- FINANCE SYSTEM INTEGRATION ----------
+               // ---------- FINANCE SYSTEM INTEGRATION ----------
                 financeService.processPayment(expense);
-
+                
+               // ---------- WRITE OUTPUT TO FILE ----------
+                FileOutput.writeOutput(emp, expense, expense.calculateReimbursement());
+                
                 System.out.print("\nDo you want to submit another expense category? (yes/no): ");
                 String choice = sc.nextLine();
 

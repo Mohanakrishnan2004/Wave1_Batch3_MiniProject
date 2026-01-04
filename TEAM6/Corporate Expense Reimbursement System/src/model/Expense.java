@@ -5,7 +5,8 @@ public abstract class Expense {
     private int expenseId;
     private double amount;
     private String status;
-    private Receipt receipt;   // 🔹 Added receipt
+    private Receipt receipt;   
+    private String category;
 
     public Expense(int expenseId, double amount) {
         this.expenseId = expenseId;
@@ -13,7 +14,6 @@ public abstract class Expense {
         this.status = "SUBMITTED";
     }
 
-    // ---------- Getters ----------
     public int getExpenseId() {
         return expenseId;
     }
@@ -29,8 +29,11 @@ public abstract class Expense {
     public Receipt getReceipt() {
         return receipt;
     }
+    
+    public String getCategory() {
+        return category;
+    }
 
-    // ---------- Setters ----------
     public void setStatus(String status) {
         this.status = status;
     }
@@ -38,7 +41,10 @@ public abstract class Expense {
     public void setReceipt(Receipt receipt) {
         this.receipt = receipt;
     }
+    
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-    // ---------- Abstract Method ----------
     public abstract double calculateReimbursement();
 }

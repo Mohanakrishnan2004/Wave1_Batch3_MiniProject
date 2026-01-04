@@ -1,0 +1,16 @@
+Employee ID      : 101
+Employee Name    : krish
+Expense ID       : 1
+Expense Category : FOOD
+Expense Amount   : 1000.0
+Reimbursed Amt   : 600.0
+Final Status     : FINANCE APPROVED
+-----------------------------------
+Employee ID      : 102
+Employee Name    : Nandana
+Expense ID       : 2
+Expense Category : FOOD
+Expense Amount   : 3000.0
+Reimbursed Amt   : 1800.0
+Final Status     : FINANCE APPROVED
+-----------------------------------
